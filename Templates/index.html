@@ -9,8 +9,8 @@
   <title>New Chat</title>
 
   <style>
-    .right1{
-      display:None;
+    .right2 {
+      display: None;
     }
   </style>
 </head>
@@ -18,6 +18,7 @@
 <body class="bg-chatblack-50">
   <div class="flex h-[100vh] text-white">
     <div class="left w-2/12 bg-[#0d0d0d]">
+
       <button
         class="w-[90%] py-2 m-2 px-7 border-white border rounded-md flex mx-4 justify-start items-center hover:opacity-70">
         <div class="flex  items-center">
@@ -27,13 +28,21 @@
         </div>
       </button>
 
+      <div class="text-xs mx-8 my-3 text-gray-400">Today</div>
 
-      <div class="chats flex flex-col justify-center items-center">
+      <div class="chats flex flex-col justify-center items-center space-y-2">
+
+      {% for chat in myChats %}
+        
         <div
           class="chat opacity-80 px-4 py-2 w-[90%] rounded-md cursor-pointer space-x-2 flex justify-start content-center">
           <img class="h-4 w-4 -py-2 " src="https://cdn-icons-png.flaticon.com/128/4611/4611975.png" alt="logo" />
-          <span>Clone Ai Assistant</span>
+          <span>{{chat.question}}</span>
         </div>
+
+         {% endfor %}
+
+
         <div
           class=" chat opacity-80 px-4 py-2 w-[90%] rounded-md cursor-pointer space-x-2 flex justify-start content-center">
           <img class="h-4 w-4 -py-2 " src="https://cdn-icons-png.flaticon.com/128/4611/4611975.png" alt="logo" />
@@ -49,15 +58,13 @@
             <span>Mohammed Zakria Khan</span>
           </div>
         </div>
-
-
       </div>
     </div>
 
 
 
     <div class="right1 w-10/12 flex justify-center items-center flex-col">
-      <div class="text-center w-full text-4xl font-bold my-5">ChatGpt</div>
+      <div class="text-center w-full text-4xl font-bold my-5 -mt-36">ChatGpt</div>
       <div class="itemsrow flex py-4 w-[43vw] justify-around">
         <div class="examples flex flex-col justify-center items-center">
           <img src="https://cdn-icons-png.flaticon.com/128/1004/1004519.png" alt="Sun Icon" class="h-6 w-6 white-svg" />
@@ -102,9 +109,10 @@
         </div>
       </div>
 
-      <div class="input w-full text-center my-36">
-        <input class="w-[50%] p-4 bg-gray-600 rounded-md" placeholder="send a message" type="text" name="text" id="">
-        <button class="relative bg-gray-600 -left-10 hover:bg-gray-700"> <img
+      <div class="input  w-[100%] pl-80 text-center my-28  fixed -bottom-14 left-1/2 transform -translate-x-1/2">
+        <input class="w-[50%] p-4 bg-gray-600 rounded-md" placeholder="send a message" type="text" name="text"
+          id="questionInput">
+        <button id="sendButton" class="relative bg-gray-600 -left-10 hover:bg-gray-700"> <img
             src="https://cdn-icons-png.flaticon.com/128/1946/1946547.png" alt="logo" class="h-5 w-5">
         </button>
         <div class="text-xs py-2 pr-10 opacity-70">Free Research Preview. ChatGPT may produce inaccurate
@@ -114,20 +122,65 @@
       </div>
     </div>
 
-    <div class="right2">
-      <div class="box1 flex justify-center items-center">
-        <img class="h-5 w-5 -py-4" src="https://i1.wp.com/cdn.auth0.com/avatars/mo.png?ssl=1" alt="image"/>
-        <div>how are you</div>        
+    <div class="right2 w-full flex flex-col items-center h-fit">
+      <div class="box1 m-auto flex justify-start w-[40vw] items-center space-x-6 py-6">
+        <img class="h-6 w-6 -py-4" src="https://i1.wp.com/cdn.auth0.com/avatars/mo.png?ssl=1" alt="image" />
+        <div id="question1">how are you</div>
       </div>
-      <div class="box2"></div>
+
+      <div class="box2 flex justify-center w-full items-center space-x-6 py-6 bg-gray-600">
+        <div class="box w-[40vw] flex justify-start space-x-6">
+          <img class="h-6 w-6 -py-4"
+            src="https://th.bing.com/th/id/OIP.v-DZleDIV-mWBzSZHnaFFwHaHa?w=170&h=180&c=7&r=0&o=5&pid=1.7"
+            alt="image" />
+
+          <div class="flex flex-col space-y-4">
+            <div id="question2">how are you</div>
+            <div id="solution">hi i am fine . thanks for asking</div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="input w-[100%] pl-80 text-center my-36 fixed -bottom-14 left-1/2 transform -translate-x-1/2 ">
+        <div class="relative pt-24">
+          <input class="w-[50%] p-4 bg-gray-600 rounded-md" placeholder="send a message" type="text" name="text" id="">
+          <button class="relative bg-gray-600 -left-10 hover:bg-gray-700">
+            <img src="https://cdn-icons-png.flaticon.com/128/1946/1946547.png" alt="logo" class="h-5 w-5">
+          </button>
+        </div>
+        <div class="text-xs py-2 pr-10 opacity-70">
+          Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts.
+          <a class="underline" href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes"> ChatGPT Mar 23
+            Version</a>
+        </div>
+      </div>
+
+
+      <!-- <div class="input w-full md:w-[100%] lg:w-[80%] pl-4 md:pl-72 text-center my-36 fixed bottom-14 left-1/2 transform -translate-x-1/2">
+      <div class="relative pt-24">
+          <input class="w-full md:w-[65%] p-4 bg-gray-600 rounded-md" placeholder="send a message" type="text" name="text" id="">
+          <button class="relative bg-gray-600 -left-10 hover:bg-gray-700"> 
+              <img src="https://cdn-icons-png.flaticon.com/128/1946/1946547.png" alt="logo" class="h-5 w-5">
+          </button>
+      </div>
+      <div class="text-xs py-2 pr-4 md:pr-10 opacity-70">
+          Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts.
+          <a class="underline" href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes"> ChatGPT Mar 23 Version</a>
+      </div>
+  </div> -->
+
     </div>
-
-
   </div>
 
   </div>
 
   </div>
+
+  </div>
+  <script src="../static/js/script.js"></script>
 </body>
 
 </html>
